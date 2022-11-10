@@ -100,31 +100,32 @@ public class Main {
     public static void menu() {// imprime o menu
 
         Scanner input = new Scanner(System.in);
-
-        System.out.println("\n|||Menu Principal|||");
-        System.out.println("====================");
-        System.out.println("|| 1 - Instruções ||");
-        System.out.println("|| 2 - Jogar      ||");
-        System.out.println("|| 3 - Céditos    ||");
-        System.out.println("|| 4 - Sair       ||");
-        System.out.println("====================\n");
-        int opcaoMenu = input.nextInt();
-
-        while (opcaoMenu != 4) {
+        int opcaoMenu;
+        
+        do{
+            
+            System.out.println("\n|||Menu Principal|||");
+            System.out.println("====================");
+            System.out.println("|| 1 - Instruções ||");
+            System.out.println("|| 2 - Jogar      ||");
+            System.out.println("|| 3 - Céditos    ||");
+            System.out.println("|| 4 - Sair       ||");
+            System.out.println("====================\n");
+            opcaoMenu = input.nextInt();
 
             switch (opcaoMenu) {
                 case 1:
-                    if (instucao(opcaoMenu) == 4) {
+                    if (instucao(opcaoMenu) != 4) {
                         menu();
                     }
                     break;
                 case 2:
-                    if (jogar(opcaoMenu) == 4) {
+                    if (jogar(opcaoMenu) != 4) {
                         menu();
                     }
                     break;
                 case 3:
-                    if (creditos(opcaoMenu) == 4) {
+                    if (creditos(opcaoMenu) != 4) {
                         menu();
                     }
                     break;
@@ -133,9 +134,8 @@ public class Main {
                     break;
                 default:
                     System.out.println("Opção invalida");
-                    menu();
             }
-        }
+        }while(opcaoMenu != 4);
     }
 
     public static void telaInicial() {
