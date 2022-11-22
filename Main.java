@@ -87,11 +87,11 @@ public class Main {
         try {
             System.out.println("\n██ Inciando o Jogo... ██\n");
             tempoPadraoAnimacao(250);
-            System.out.println(".");
+            System.out.printf(".");
             tempoPadraoAnimacao(250);
-            System.out.println(".");
+            System.out.printf(".");
             tempoPadraoAnimacao(250);
-            System.out.println(".\n");
+            System.out.printf(".\n");
             tempoPadraoAnimacao(250);
             String jogador_nome = personalizar_personagem();
             epilogo(jogador_nome);
@@ -129,8 +129,7 @@ public class Main {
     }
     // -----------------------------------------------------------------------------------------------------------
 
-    // ------------------------------------- MÉTODOS DE CAPTURA DE ENTRADA DO
-    // JOGADOR ----------------------------
+    // ------------------------------------- MÉTODOS DE CAPTURA DE ENTRADA DO JOGADOR 
     public static String entradaTexto() {// Ângelo - Método para a entrada tipo String;
         Scanner input = new Scanner(System.in);
         String entradaUsuarioTexto = input.next();
@@ -142,6 +141,7 @@ public class Main {
         int entradaUsuarioNumero = input.nextInt();
         return entradaUsuarioNumero;
     }
+
     // ------------------------------------------------------------------------------------------------------------
 
     // ----------------------------- PARTE DAS PERGUNTAS
@@ -379,27 +379,55 @@ public class Main {
     }
     // -------------------------------------------------------------------------------------------------------
 
+
+    //---------------------------- Primeiro Capitulo ----------------------------
     private static void capitulo_um(String nome_jogador) {
-        tempoPadraoAnimacao(670);
+        tempoPadraoAnimacao((670*10));
         System.out.printf(
-                "\nHawk: Olá %S lhe garanto que se você desejar de fato, obter a consciência que estou\ndisposto a ensinar, você poderá atravessar fronteiras e desbravar o mundo com tal compreensão. Para conquistar esta clareza mental que vos falo, precisaremos nos aventurar por um lugar chamado 'Floresta das almas'. Onde haverá desafios e indagações para a minha pessoa, e para ti também, aceita correr esse risco para despertar sua consciência? Garanto que será útil em breve. Muito bem, então vamos lá.",
+                "\n\nHawk: Olá %S lhe garanto que se você desejar de fato, obter a consciência que estou disposto a ensinar,",
                 nome_jogador);
+        tempoPadraoAnimacao((670 * 10));
+        System.out.printf("\nvocê poderá atravessar fronteiras e desbravar o mundo com tal compreensão.");
+        tempoPadraoAnimacao((670 * 10));
+        System.out.printf("\nPara conquistar esta clareza mental que vos falo, precisaremos nos aventurar por um lugar chamado 'Floresta das almas'.");
+        tempoPadraoAnimacao((670 * 10));
+        System.out.println("\nOnde haverão desafios e indagações para a minha pessoa, e para ti também, aceita correr esse risco para despertar sua consciência?");
+        tempoPadraoAnimacao((670 * 10));
+        System.out.printf("\n\nGaranto que será útil em breve. Muito bem, então vamos lá.");
+        tempoPadraoAnimacao((670 * 10));
+        System.out.println("\nVocês caminham até a floresta e o mago lan Hawk descreve como funcionarão as coisas:\n");
+        tempoPadraoAnimacao((550 * 10));
+        System.out.printf("\nHawk: Pois bem, %S, nós caminharemos por esta floresta e surgirão monstros que farão perguntas sobre alguns assuntos.",nome_jogador,nome_jogador);
+        tempoPadraoAnimacao((670*10));
+        System.out.printf("\nQuando isto acontecer, eu irei parar o tempo com um cristal mágico e iremos conversar");
+        tempoPadraoAnimacao((670*10));
+        System.out.printf("\nsobre o assunto, eu posso usar até 10 cristais para lhe ajudar, sendo apenas 1 por desafio,");
+        tempoPadraoAnimacao((670*10));
+        System.out.printf("\ne você tem a liberdade de querer parar nossa jornada com o");
+        tempoPadraoAnimacao((670*10));
+        System.out.println("\nuso de no mínimo 5 cristais. lembrando que eu irei lhe ajudar, mas sem lhe dar a resposta correta.");
+        tempoPadraoAnimacao((670*10));
+        System.out.println("\n\n\nPreparado %S?");
+        tempoPadraoAnimacao((670*10));
+
     }
 
+    //---------------------------- Epilogo --------------------------------------------------
     public static void epilogo(String nome_jogador) {
         boolean verificaResposta = false;
 
         System.out.printf(
-                "\n%S, sua história começa com um jovem mestre, alguns taberneiros achavam que ele era um charlatão,\nas vezes o confundiam com um mago, e outras com um ser místico, enquanto outras pessoas\napenas o achavam um rapaz louco e bêbado",
+                "\n%S, sua história começa com um jovem mestre, alguns taberneiros achavam que ele era um charlatão,\nas vezes o confundiam com um mago, e outras com um ser místico, enquanto outras pessoas\napenas o achavam um rapaz louco e bêbado.\n\n",
                 nome_jogador);
         tempoPadraoAnimacao((670 * 10));
         System.out.printf(
-                "\nEle possuía 1,71 de altura, barba rala e calvície. Era sorridente e bastante engraçado. Seu nome era lan Hawk.\nlan possuía muito conhecimento em assuntos computacionais, e por esse motivo as pessoas o achavam\nirracional, por ter conhecimento de assuntos que não eram daquela época e que ninguém nunca entendia.");
+                "Ele possuía 1,71 de altura, barba rala era calvo.\n\nEra sorridente e bastante engraçado.\n\nSeu nome era lan Hawk.\nlan possuía muito conhecimento em assuntos computacionais, e por esse motivo as pessoas o achavam maluco, por ter conhecimento de assuntos que não faziam sentido naquela época e que ninguém nunca entendia.\n\n");
         tempoPadraoAnimacao((670 * 10));
         System.out.printf(
-                "\nMas como estava ficando muito velho decidiu passar sua sabedoria para as próximas gerações.\nEle queria plantar a semente do conhecimento naqueles que tinham vontade de aprender.");
+                "\nMas como estava ficando muito velho decidiu passar sua sabedoria para as próximas gerações.\n\nEle queria plantar a semente do conhecimento naqueles que tinham vontade de aprender.");
         tempoPadraoAnimacao((670 * 10));
 
+        //Se a resposta for verdade continua o jogo
         while (!verificaResposta == true) {
             System.out.println(
                     "\n\nVocê está pronto(a) para se tornar o aprendiz do mestre mago?\n");
@@ -416,12 +444,16 @@ public class Main {
 
             if (!entrada_user.equalsIgnoreCase("n") && entrada_user != null && entrada_user.matches("^[a-zA-Z]*$")) {
                 verificaResposta = true;
-            } else {
+            } else if (entrada_user.equalsIgnoreCase("n") && entrada_user != null && entrada_user.matches("^[a-zA-Z]*$")) {
+                menu();
+            } 
+            else {
                 System.out.println("Opa, parece que você digitou algo errado, lembre-se, responda com S ou N");
             }
         }
 
     }
+
 
     public static void main(String[] args) {
         imprimeBoasVindas();// animação de boas vindas ao jogo
