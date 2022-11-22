@@ -2,6 +2,8 @@ import java.util.Scanner; //Método para captar a entrada do usuário
 
 public class Main {
 
+    // ------------------------------------------- "ANIMAÇÃO"
+    // ----------------------------------------------------
     public static void tempoPadraoAnimacao(int milisegundos) {/*
                                                                * Ângelo -cria o intervalo do Thread para promover a
                                                                * sensação de animação
@@ -15,6 +17,7 @@ public class Main {
         } catch (InterruptedException ignored) {
         }
     }
+    // ----------------------------------------------------------------------------------------------------------------
 
     public static void imprimeBoasVindas() {
 
@@ -57,6 +60,7 @@ public class Main {
         tempoPadraoAnimacao(115);
     }
 
+    // ------------------------------------- INSTRUÇÕES ---------------------------
     public static int instucao(int opcao) {
         // Matheus && Ângelo - Função que contém as instruções
         Scanner input = new Scanner(System.in);
@@ -73,7 +77,10 @@ public class Main {
         }
         return opcao; // retorna a opção escolhida
     }
+    // -------------------------------------------------------------------------------------
 
+    // ---------------------------------------------------------- MÉTODO QUE INICIA
+    // O JOGO -----------------------//
     public static int jogar(int opcao) {
         // Matheus && Ângelo - Função que inicia o jogo após escolha no menu
         Scanner input = new Scanner(System.in);
@@ -86,7 +93,9 @@ public class Main {
             tempoPadraoAnimacao(250);
             System.out.println(".\n");
             tempoPadraoAnimacao(250);
-            personalizar_personagem();
+            String jogador_nome = personalizar_personagem();
+            epilogo(jogador_nome);
+            capitulo_um(jogador_nome);
             System.out.println("**Pressione 4 para retornar ao menu principal**\n");
             opcao = input.nextInt();
         } catch (Exception e) {// caso seja inserido um valor inválido exibe a seguinte mensagem de erro e
@@ -96,9 +105,11 @@ public class Main {
         }
         return opcao;
     }
+    // ---------------------------------------------------------------------------------------------//
 
+    // ----------------------- MÉDOTO DOS CRÉDITOS -----------------------
     public static int creditos(int opcao) {
-        // Matheus && Ângelo - exibe os créditos do jogo
+        // Nery - exibe os créditos do jogo
         Scanner input = new Scanner(System.in);
         try {
             System.out.println("\n|| Créditos ||\n");
@@ -116,13 +127,25 @@ public class Main {
         }
         return opcao;
     }
+    // -----------------------------------------------------------------------------------------------------------
 
+    // ------------------------------------- MÉTODOS DE CAPTURA DE ENTRADA DO
+    // JOGADOR ----------------------------
     public static String entradaTexto() {// Ângelo - Método para a entrada tipo String;
         Scanner input = new Scanner(System.in);
         String entradaUsuarioTexto = input.next();
         return entradaUsuarioTexto;
     }
 
+    public static int entrada_Numero() {
+        Scanner input = new Scanner(System.in);
+        int entradaUsuarioNumero = input.nextInt();
+        return entradaUsuarioNumero;
+    }
+    // ------------------------------------------------------------------------------------------------------------
+
+    // ----------------------------- PARTE DAS PERGUNTAS
+    // -----------------------------
     public static void perguntas() {
         // Nery & Alessandro - Perguntas e história a serem usadas no jogo
         String[][] perguntas = { {
@@ -138,36 +161,37 @@ public class Main {
                         "(E) Alternativas I & III estão corretas." } };
     }
 
-    public static void personalizar_personagem() {
+    // --------------------PARTE DE
+    // PERSONALIZAÇÃO--------------------------------------
+    public static String personalizar_personagem() {
         /*
          * Função que modifica o personagem principal ao gosto e as opções dispostas ao
          * jogador
          */
         String entradaUser;
-        boolean verificaCase = false, verificaRaca = false, confirmaEscolhaNome = false;
+        int entradaUserInt;
+        boolean verificaCase = false, verificaRaca = false, verificaIdade = false, confirmaEscolhaNome = false;
         String viajante_nome = "";
         String viajante_raca = "";
+        int viajante_idade = 0;
         String confirmaEscolha = "";
 
+        // Escolha de nome
         while (verificaCase == false) {
             tempoPadraoAnimacao(250);
             System.out.printf("Olá viajante, qual o seu nome?: ");
             entradaUser = entradaTexto();
 
-            if (!entradaUser.equals("") && entradaUser != null && entradaUser.matches("^[a-zA-Z]*$"))/*
-                                                                                                      * Utilizo de
-                                                                                                      * expressão
-                                                                                                      * regular para
-                                                                                                      * validar a
-                                                                                                      * entrada do campo
-                                                                                                      */ {
+            if (!entradaUser.equals("") && entradaUser != null && entradaUser.matches("^[a-zA-Z]*$")) {
+                /* Utilizo de expressão regular para validar a entrada do campo */
                 viajante_nome = entradaUser;
-
+                // Valida nome
                 while (!confirmaEscolhaNome == true) {
+                    // confirma o nome escolhido
                     System.out.printf("\nSeu nome é %S correto?\n", viajante_nome);
                     System.out.println("Confirme com S ou N");
                     entradaUser = entradaTexto();
-                    if (entradaUser.equals("S")) {
+                    if (entradaUser.equalsIgnoreCase("S")) {
                         confirmaEscolhaNome = true;
                     } else {
                         System.out.println("\nEntão qual é o seu nome?");
@@ -176,7 +200,7 @@ public class Main {
                         confirmaEscolhaNome = true;
                     }
                 }
-                
+
                 tempoPadraoAnimacao(250);
                 System.out.printf("\nPrazer em conhece-lo %S!\n", viajante_nome);
                 tempoPadraoAnimacao(250);
@@ -187,9 +211,10 @@ public class Main {
             }
         }
 
+        // Escolha de raça
         while (verificaRaca == false) {
             tempoPadraoAnimacao(250);
-            System.out.printf("\nAgora, me diga %S qual a sua raça?:\n", viajante_nome);
+            System.out.printf("\nAgora, me diga %S qual é a sua raça?:\n", viajante_nome);
             tempoPadraoAnimacao(500);
             System.out.println("\nA) Humano - Ambicioso, Audaz e Diverso");
 
@@ -200,67 +225,94 @@ public class Main {
             System.out.println("D) Halfling - Bravos, Ágeis e Sortudos!\n");
 
             entradaUser = entradaTexto();
-            switch (entradaUser.toUpperCase()) {
-                case "A":
-                    tempoPadraoAnimacao(500);
-                    System.out.println("Você escolheu Humano, correto?");
-                    System.out.println("Responda com S ou N");
-                    viajante_raca = "Humano";
-                    confirmaEscolha = entradaTexto();
-                    tempoPadraoAnimacao(500);
 
-                    tempoPadraoAnimacao(500);
-                    if (confirmaEscolha.equalsIgnoreCase("S")) {
-                        verificaRaca = true;
-                    }
-                    break;
-                case "B":
-                    System.out.println("Você escolheu Elfo, correto?");
-                    System.out.println("Responda com S ou N");
-                    viajante_raca = "Elfo";
-                    tempoPadraoAnimacao(500);
-                    confirmaEscolha = entradaTexto();
-                    tempoPadraoAnimacao(500);
+            // Confirma a escolha da raça
+            if (!entradaUser.equals("") && entradaUser != null && entradaUser.matches("^[a-zA-Z]*$")) {
+                switch (entradaUser.toUpperCase()) {
+                    case "A":
+                        tempoPadraoAnimacao(500);
+                        System.out.println("Você escolheu Humano, correto?");
+                        System.out.println("Responda com S ou N");
+                        viajante_raca = "Humano";
+                        confirmaEscolha = entradaTexto();
+                        tempoPadraoAnimacao(500);
 
-                    if (confirmaEscolha.equalsIgnoreCase("S")) {
-                        verificaRaca = true;
-                    }
-                    break;
-                case "C":
-                    System.out.println("Você escolheu Anão, correto?");
-                    System.out.println("Responda com S ou N");
-                    viajante_raca = "Anão";
-                    tempoPadraoAnimacao(500);
-                    confirmaEscolha = entradaTexto();
-                    tempoPadraoAnimacao(500);
+                        tempoPadraoAnimacao(500);
+                        if (confirmaEscolha.equalsIgnoreCase("S")) {
+                            verificaRaca = true;
+                        }
+                        break;
+                    case "B":
+                        System.out.println("Você escolheu Elfo, correto?");
+                        System.out.println("Responda com S ou N");
+                        viajante_raca = "Elfo";
+                        tempoPadraoAnimacao(500);
+                        confirmaEscolha = entradaTexto();
+                        tempoPadraoAnimacao(500);
 
-                    if (confirmaEscolha.equalsIgnoreCase("S")) {
-                        verificaRaca = true;
-                    }
-                    break;
-                case "D":
-                    System.out.println("Você escolheu Halfling, correto?");
-                    System.out.println("Responda com S ou N");
-                    viajante_raca = "Halfling";
-                    tempoPadraoAnimacao(500);
-                    confirmaEscolha = entradaTexto();
-                    tempoPadraoAnimacao(500);
+                        if (confirmaEscolha.equalsIgnoreCase("S")) {
+                            verificaRaca = true;
+                        }
+                        break;
+                    case "C":
+                        System.out.println("Você escolheu Anão, correto?");
+                        System.out.println("Responda com S ou N");
+                        viajante_raca = "Anão";
+                        tempoPadraoAnimacao(500);
+                        confirmaEscolha = entradaTexto();
+                        tempoPadraoAnimacao(500);
 
-                    if (confirmaEscolha.equalsIgnoreCase("S")) {
-                        verificaRaca = true;
-                    }
-                    break;
-                default:
-                    System.out.println("Parece que você não escolheu uma das opções válidas");
-                    break;
+                        if (confirmaEscolha.equalsIgnoreCase("S")) {
+                            verificaRaca = true;
+                        }
+                        break;
+                    case "D":
+                        System.out.println("Você escolheu Halfling, correto?");
+                        System.out.println("Responda com S ou N");
+                        viajante_raca = "Halfling";
+                        tempoPadraoAnimacao(500);
+                        confirmaEscolha = entradaTexto();
+                        tempoPadraoAnimacao(500);
+
+                        if (confirmaEscolha.equalsIgnoreCase("S")) {
+                            verificaRaca = true;
+                        }
+                        break;
+                    default:
+                        System.out.println("Parece que você não escolheu uma das opções válidas");
+                        break;
+                }
+            } else {
+                tempoPadraoAnimacao(250);
+                System.out.println("\nViajante, existe algo de errado com seu nome, tente novamente\n");
+                tempoPadraoAnimacao(250);
+            }
+
+            // Pede a idade e confirma a idade;
+            while (verificaIdade == false) {
+                tempoPadraoAnimacao(500);
+                System.out.printf("Agora me diga %S, o(a) %S, qual é a sua idade?\n", viajante_nome, viajante_raca);
+                entradaUserInt = entrada_Numero();
+                if (entradaUserInt > 0) {
+                    viajante_idade = entradaUserInt;
+                    verificaIdade = true;
+                } else {
+                    System.out.println("Você informou algum valor inválido, tente novamente");
+                    tempoPadraoAnimacao(500);
+                }
             }
 
         }
         System.out.printf(
-                "\nCerto, então você é um %S e seu nome é %S. \n-Prepare-se para os desafios que vem adiante %S, e muito cuidado! \n-Todas as suas decisões tem consequências!\n",
-                viajante_raca, viajante_nome, viajante_nome);
+                "\nCerto, então você é um %S e seu nome é %S, você tem %d anos\n-Prepare-se para os desafios que vem adiante %S, o(a) %S e muito cuidado! \n-Todas as suas decisões tem consequências!\n",
+                viajante_raca, viajante_nome, viajante_idade, viajante_nome, viajante_raca);
+        tempoPadraoAnimacao((450 * 10));
+
+        return viajante_nome;
     }
 
+    // -----------------------------------------------------Menu
+    // principal---------------------------------------------------------------
     public static void menu() {
         // Alessando && Ângelo - imprime o menu e aceita a escolha do usuário
 
@@ -308,6 +360,7 @@ public class Main {
         } while (opcaoMenu != 4);
     }
 
+    // --------------------------------- Tela de abertura do jogo ---------------
     public static void telaInicial() {
         /*
          * Matheus && Nery - A tela inicial que permite o usuário iniciar o jogo ou sair
@@ -323,6 +376,51 @@ public class Main {
         } else if (entrada.equalsIgnoreCase("n")) {
             System.exit(0);
         }
+    }
+    // -------------------------------------------------------------------------------------------------------
+
+    private static void capitulo_um(String nome_jogador) {
+        tempoPadraoAnimacao(670);
+        System.out.printf(
+                "\nHawk: Olá %S lhe garanto que se você desejar de fato, obter a consciência que estou\ndisposto a ensinar, você poderá atravessar fronteiras e desbravar o mundo com tal compreensão. Para conquistar esta clareza mental que vos falo, precisaremos nos aventurar por um lugar chamado 'Floresta das almas'. Onde haverá desafios e indagações para a minha pessoa, e para ti também, aceita correr esse risco para despertar sua consciência? Garanto que será útil em breve. Muito bem, então vamos lá.",
+                nome_jogador);
+    }
+
+    public static void epilogo(String nome_jogador) {
+        boolean verificaResposta = false;
+
+        System.out.printf(
+                "\n%S, sua história começa com um jovem mestre, alguns taberneiros achavam que ele era um charlatão,\nas vezes o confundiam com um mago, e outras com um ser místico, enquanto outras pessoas\napenas o achavam um rapaz louco e bêbado",
+                nome_jogador);
+        tempoPadraoAnimacao((670 * 10));
+        System.out.printf(
+                "\nEle possuía 1,71 de altura, barba rala e calvície. Era sorridente e bastante engraçado. Seu nome era lan Hawk.\nlan possuía muito conhecimento em assuntos computacionais, e por esse motivo as pessoas o achavam\nirracional, por ter conhecimento de assuntos que não eram daquela época e que ninguém nunca entendia.");
+        tempoPadraoAnimacao((670 * 10));
+        System.out.printf(
+                "\nMas como estava ficando muito velho decidiu passar sua sabedoria para as próximas gerações.\nEle queria plantar a semente do conhecimento naqueles que tinham vontade de aprender.");
+        tempoPadraoAnimacao((670 * 10));
+
+        while (!verificaResposta == true) {
+            System.out.println(
+                    "\n\nVocê está pronto(a) para se tornar o aprendiz do mestre mago?\n");
+            System.out.printf("Responda com S ou N: \n\n");
+            String entrada_user = entradaTexto();
+            System.out.printf(".");
+            tempoPadraoAnimacao(300 * 10);
+            System.out.printf(".");
+            tempoPadraoAnimacao(300 * 10);
+            System.out.printf(".");
+            tempoPadraoAnimacao(300 * 10);
+            System.out.printf(".");
+            tempoPadraoAnimacao(300 * 10);
+
+            if (!entrada_user.equalsIgnoreCase("n") && entrada_user != null && entrada_user.matches("^[a-zA-Z]*$")) {
+                verificaResposta = true;
+            } else {
+                System.out.println("Opa, parece que você digitou algo errado, lembre-se, responda com S ou N");
+            }
+        }
+
     }
 
     public static void main(String[] args) {
