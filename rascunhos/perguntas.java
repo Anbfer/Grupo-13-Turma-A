@@ -1,4 +1,4 @@
-public class perguntas {
+public class Main {
   public static void main(String[] args) {
   
     //PerguntaUm
@@ -53,19 +53,12 @@ public class perguntas {
   
       System.out.println("Hawk: Tudo bem minha cara, usei meu poder de mago para deduzir que tipo de pergunta ele irá fazer e essa minha lição ajudará você a responde-la. Não tão diferente do último desafio que encontramos, será uma pergunta relacionada a operadores lógicos, desta vez o operador “OR”. A tabela do operador “OR” dá-se pelo fato de que o número sempre será 1 até obtermos dois valores que possuam pelo menos um número igual a 1. Como por exemplo: 0+0=0");
   
-    System.out.println("0+1=1");
-    System.out.println("1+0=1");
-    System.out.println("1+1=1");
-        
-      System.out.println("Antes mesmo de Hawk dar continuidade a explicação, o monstro avança até você novamente enquanto grita a pergunta:");
-      System.out.println("Arvoroto: ENTÃO VAMOS COMEÇAR: ME DÊ 1 EXEMPLO DO OPERADOR AND:");
+        System.out.println("0+1=1");
+        System.out.println("1+0=1");
+        System.out.println("1+1=1");
   
-      System.out.println("A) 0+1+0+1=0");
-      System.out.println("B) 1+1+1+1=1");
-      System.out.println("C) 1+1+0+0=1");
-      System.out.println("D) 0+0+0+1=1");
-  
-      System.out.println("Bakgou: Então... Não temos tempo a perder, huh? Vamos ao seu desafio então: Suponhamos que um jovem comerciante esteja vendendo 5 maçãs e 10 bananas, e seu cliente compre 6 dessas frutas, a quantidade de frutas que irão restar será correspondente ao valor da tabela verdade do operador lógico “OR”?");
+      System.out.println("Bakgou: Então... Não temos tempo a perder, huh? Vamos ao seu desafio então:"); 
+      System.out.println("Suponhamos que um jovem comerciante esteja vendendo 5 maçãs e 10 bananas, e seu cliente compre 6 dessas frutas, a quantidade de frutas que irão restar será correspondente ao valor da tabela verdade do operador lógico “OR”?");
   
       //RespostasQuatro
   
