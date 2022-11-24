@@ -431,6 +431,7 @@ public class Main {
         System.out.printf(".\n");
         tempoPadraoAnimacao((500*10));
         System.out.printf("\nA criatura sussurrava repetidas vezes: \n");
+        
         tempoPadraoAnimacao((670*10));
         System.out.printf("-um zero um zero zero zero um um um um zero (10100011110) - a criatura medonha fez uma pausa e então continuou.\n");
         tempoPadraoAnimacao((500*10));
