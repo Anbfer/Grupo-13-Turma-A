@@ -148,10 +148,8 @@ public class Main {
     // -----------------------------
     public static void perguntas() {
         // Nery & Alessandro - Perguntas e história a serem usadas no jogo
-        String[][] alternativas = {{"(A) 1310 & 2022","(B) 1182 & 2022","(C) 1564 & 2120","(D) 1296 & 1925", "(E) 1309 & 2000"}};
-
-        String[][] respostas = {
-                { "(A) 1310 & 2022"}};
+     
+        String[][] respostas = {{ "(A) 1310 & 2022"}};
     }
 
     // --------------------PARTE DE
