@@ -148,8 +148,17 @@ public class Main {
     // -----------------------------
     public static void perguntas() {
         // Nery & Alessandro - Perguntas e história a serem usadas no jogo
-     
-        String[][] respostas = {{ "(A) 1310 & 2022"}};
+        String[][] perguntas = { {
+                "1 - um zero um zero zero zero um um um um zero (10100011110) - a criatura medonha fez uma pausa e então continuou. - um um um una um zero zero um um zero (1111 1100 110). \n Hawk: Para convertermos um número 'binário' para decimal, basta multiplicarmos essa ordem: 1010 0011 110 pelas potências do número 2. Como por exemplo: 1x210 0x29 1x28 0x27 0x26 0x25 1x24 1x23 1x22 1x21 0x2°. Utilizando a ordem do 1° número binário (10100011110) \nConhece os valores de 2? Para relembrarmos, vou lhe dar uma pequena dica de cálculo: 2x11 = 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2. \n O resultado de uma multiplicação, você multiplica pelo próximo número e assim sucessivamente. Experimente realizar o cálculo e selecionar a alternativa correta:" },
+                { "Hawk: Calma meu (minha) jovem, antes de ficar preocupado deixe-me introduzir este assunto complexo: A ideia da Álgebra Booleana é a de que existem apenas duas teorias em determinada situação/problema, se é VERDADEIRO ou FALSO. Nessa Álgebra podemos encontrar funções e portas lógicas seguidas de suas Tabelas Verdades (que são os verdadeiros valores para determinadas funções, e nunca serão alteradas). As portas lógicas não funcionam apenas com valores numéricos, mas também com circuitos de chaveamento, quando algo está ligado ou desligado, por exemplo.Lamacento: [...] me diga quais afirmativas são verdadeiras e falsas:",
+                        " I. Não, Sim – Resposta óbvia. ", " II. Falso, Verdadeiro - Raciocínio humano.",
+                        " III. True, False – Raciocínio humano composto. ",
+                        " IV. Desligado, Ligado - Circuitos de chaveamento. ", " V. 0, 1 - Sistema binário." }, };
+        String[][] respostas = {
+                { "(A) 1310 & 2022", "(B) 1182 & 2022", "(C) 1564 & 2120", "(D) 1296 & 1925", "(E) 1309 & 2000" },
+                { "(A) Alternativas II & IV estão corretas.", "(B) Alternativas III & I estão corretas.",
+                        "(C) Somente III & I estão corretas.", "(D) Somente II, IV & V estão corretas.",
+                        "(E) Alternativas I & III estão corretas." } };
     }
 
     // --------------------PARTE DE
