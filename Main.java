@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner; //Método para captar a entrada do usuário
 
 public class Main {
@@ -87,11 +88,11 @@ public class Main {
         try {
             System.out.println("\n██ Inciando o Jogo... ██\n");
             tempoPadraoAnimacao(250);
-            System.out.printf(".");
+            System.out.println(".");
             tempoPadraoAnimacao(250);
-            System.out.printf(".");
+            System.out.println(".");
             tempoPadraoAnimacao(250);
-            System.out.printf(".\n");
+            System.out.println(".\n");
             tempoPadraoAnimacao(250);
             String jogador_nome = personalizar_personagem();
             epilogo(jogador_nome);
@@ -129,7 +130,8 @@ public class Main {
     }
     // -----------------------------------------------------------------------------------------------------------
 
-    // ------------------------------------- MÉTODOS DE CAPTURA DE ENTRADA DO JOGADOR 
+    // ------------------------------------- MÉTODOS DE CAPTURA DE ENTRADA DO
+    // JOGADOR ----------------------------
     public static String entradaTexto() {// Ângelo - Método para a entrada tipo String;
         Scanner input = new Scanner(System.in);
         String entradaUsuarioTexto = input.next();
@@ -141,15 +143,23 @@ public class Main {
         int entradaUsuarioNumero = input.nextInt();
         return entradaUsuarioNumero;
     }
-
     // ------------------------------------------------------------------------------------------------------------
 
     // ----------------------------- PARTE DAS PERGUNTAS
     // -----------------------------
     public static void perguntas() {
         // Nery & Alessandro - Perguntas e história a serem usadas no jogo
-     
-        String[][] respostas = {{ "(A) 1310 & 2022"}};
+        String[][] perguntas = { {
+                "1 - um zero um zero zero zero um um um um zero (10100011110) - a criatura medonha fez uma pausa e então continuou. - um um um una um zero zero um um zero (1111 1100 110). \n Hawk: Para convertermos um número 'binário' para decimal, basta multiplicarmos essa ordem: 1010 0011 110 pelas potências do número 2. Como por exemplo: 1x210 0x29 1x28 0x27 0x26 0x25 1x24 1x23 1x22 1x21 0x2°. Utilizando a ordem do 1° número binário (10100011110) \nConhece os valores de 2? Para relembrarmos, vou lhe dar uma pequena dica de cálculo: 2x11 = 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2. \n O resultado de uma multiplicação, você multiplica pelo próximo número e assim sucessivamente. Experimente realizar o cálculo e selecionar a alternativa correta:" },
+                { "Hawk: Calma meu (minha) jovem, antes de ficar preocupado deixe-me introduzir este assunto complexo: A ideia da Álgebra Booleana é a de que existem apenas duas teorias em determinada situação/problema, se é VERDADEIRO ou FALSO. Nessa Álgebra podemos encontrar funções e portas lógicas seguidas de suas Tabelas Verdades (que são os verdadeiros valores para determinadas funções, e nunca serão alteradas). As portas lógicas não funcionam apenas com valores numéricos, mas também com circuitos de chaveamento, quando algo está ligado ou desligado, por exemplo.Lamacento: [...] me diga quais afirmativas são verdadeiras e falsas:",
+                        " I. Não, Sim – Resposta óbvia. ", " II. Falso, Verdadeiro - Raciocínio humano.",
+                        " III. True, False – Raciocínio humano composto. ",
+                        " IV. Desligado, Ligado - Circuitos de chaveamento. ", " V. 0, 1 - Sistema binário." }, };
+        String[][] respostas = {
+                { "(A) 1310 & 2022", "(B) 1182 & 2022", "(C) 1564 & 2120", "(D) 1296 & 1925", "(E) 1309 & 2000" },
+                { "(A) Alternativas II & IV estão corretas.", "(B) Alternativas III & I estão corretas.",
+                        "(C) Somente III & I estão corretas.", "(D) Somente II, IV & V estão corretas.",
+                        "(E) Alternativas I & III estão corretas." } };
     }
 
     // --------------------PARTE DE
@@ -308,37 +318,75 @@ public class Main {
         // Alessando && Ângelo - imprime o menu e aceita a escolha do usuário
 
         Scanner input = new Scanner(System.in);// Método para captar a entrada do usuário
-        int opcaoMenu;
-
+        String opcaoMenu;
+        int escolha = 0;
+        boolean validaEntrada = false;
         do {
-            System.out.println("\n\n                                    ████████████████████████");
-            System.out.println("                                    ███  Menu Principal  ███");
-            tempoPadraoAnimacao(140);
-            System.out.println("                                    ████████████████████████");
-            tempoPadraoAnimacao(115);
-            System.out.println("                                    ██  1 - Instruções    ██");
-            tempoPadraoAnimacao(115);
-            System.out.println("                                    ██  2 - Jogar         ██");
-            tempoPadraoAnimacao(115);
-            System.out.println("                                    ██  3 - Céditos       ██");
-            tempoPadraoAnimacao(230);
-            System.out.println("                                    ██  4 - Sair          ██");
-            System.out.println("                                    ████████████████████████\n");
-            opcaoMenu = input.nextInt();
+            do {
+                try {
+                    System.out.println("\n\n                                    ████████████████████████");
+                    System.out.println("                                    ███  Menu Principal  ███");
+                    tempoPadraoAnimacao(140);
+                    System.out.println("                                    ████████████████████████");
+                    tempoPadraoAnimacao(115);
+                    System.out.println("                                    ██  1 - Instruções    ██");
+                    tempoPadraoAnimacao(115);
+                    System.out.println("                                    ██  2 - Jogar         ██");
+                    tempoPadraoAnimacao(115);
+                    System.out.println("                                    ██  3 - Céditos       ██");
+                    tempoPadraoAnimacao(230);
+                    System.out.println("                                    ██  4 - Sair          ██");
+                    System.out.println("                                    ████████████████████████\n");
+                    opcaoMenu = entradaTexto();
+                    if (opcaoMenu.matches("[0-9]")) {
+                        validaEntrada = true;
+                        if (opcaoMenu.equals("1")) {
+                            escolha = 1;
+                        }
+                        if (opcaoMenu.equals("2")) {
+                            escolha = 2;
+                        }
+                        if (opcaoMenu.equals("3")) {
+                            escolha = 3;
+                        }
+                        if (opcaoMenu.equals("3")) {
+                            escolha = 4;
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Entre com um valor válido");
+                    opcaoMenu = entradaTexto();
+                    if (opcaoMenu.matches("[0-9]")) {
+                        validaEntrada = true;
+                        if (opcaoMenu.equals("1")) {
+                            escolha = 1;
+                        }
+                        if (opcaoMenu.equals("2")) {
+                            escolha = 2;
+                        }
+                        if (opcaoMenu.equals("3")) {
+                            escolha = 3;
+                        }
+                        if (opcaoMenu.equals("3")) {
+                            escolha = 4;
+                        }
+                    }
+                }
+            } while (!validaEntrada == true);
 
-            switch (opcaoMenu) {
+            switch (escolha) {
                 case 1:
-                    if (instucao(opcaoMenu) != 4) {
+                    if (instucao(escolha) != 4) {
                         menu(); // exibe as instruções do jogo
                     }
                     break;
                 case 2:
-                    if (jogar(opcaoMenu) != 4) {
+                    if (jogar(escolha) != 4) {
                         menu(); // inicia o jogo
                     }
                     break;
                 case 3:
-                    if (creditos(opcaoMenu) != 4) {
+                    if (creditos(escolha) != 4) {
                         menu(); // acessa os créditos
                     }
                     break;
@@ -348,7 +396,7 @@ public class Main {
                 default:
                     System.out.println("Opção invalida");// caso seja inserido um valor invalido solicita um novo input
             }
-        } while (opcaoMenu != 4);
+        } while (escolha != 4);
     }
 
     // --------------------------------- Tela de abertura do jogo ---------------
@@ -370,107 +418,27 @@ public class Main {
     }
     // -------------------------------------------------------------------------------------------------------
 
-
-    //---------------------------- Primeiro Capitulo ----------------------------
     private static void capitulo_um(String nome_jogador) {
-        tempoPadraoAnimacao((670*10));
+        tempoPadraoAnimacao(670);
         System.out.printf(
-                "\n\nHawk: Olá %S lhe garanto que se você desejar de fato, obter a consciência que estou disposto a ensinar,",
+                "\nHawk: Olá %S lhe garanto que se você desejar de fato, obter a consciência que estou\ndisposto a ensinar, você poderá atravessar fronteiras e desbravar o mundo com tal compreensão. Para conquistar esta clareza mental que vos falo, precisaremos nos aventurar por um lugar chamado 'Floresta das almas'. Onde haverá desafios e indagações para a minha pessoa, e para ti também, aceita correr esse risco para despertar sua consciência? Garanto que será útil em breve. Muito bem, então vamos lá.",
                 nome_jogador);
-        tempoPadraoAnimacao((670 * 10));
-        System.out.printf("\nvocê poderá atravessar fronteiras e desbravar o mundo com tal compreensão.");
-        tempoPadraoAnimacao((670 * 10));
-        System.out.printf("\nPara conquistar esta clareza mental que vos falo, precisaremos nos aventurar por um lugar chamado 'Floresta das almas'.");
-        tempoPadraoAnimacao((670 * 10));
-        System.out.println("\nOnde haverão desafios e indagações para a minha pessoa, e para ti também, aceita correr esse risco para despertar sua consciência?");
-        tempoPadraoAnimacao((670 * 10));
-        System.out.printf("\n\nGaranto que será útil em breve. Muito bem, então vamos lá.");
-        tempoPadraoAnimacao((670 * 10));
-        System.out.println("\nVocês caminham até a floresta e o mago lan Hawk descreve como funcionarão as coisas:\n");
-        tempoPadraoAnimacao((550 * 10));
-        System.out.printf("\nHawk: Pois bem, %S, nós caminharemos por esta floresta e surgirão monstros que farão perguntas sobre alguns assuntos.",nome_jogador,nome_jogador);
-        tempoPadraoAnimacao((670*10));
-        System.out.printf("\nQuando isto acontecer, eu irei parar o tempo com um cristal mágico e iremos conversar");
-        tempoPadraoAnimacao((670*10));
-        System.out.printf("\nsobre o assunto, eu posso usar até 10 cristais para lhe ajudar, sendo apenas 1 por desafio,");
-        tempoPadraoAnimacao((670*10));
-        System.out.printf("\ne você tem a liberdade de querer parar nossa jornada com o");
-        tempoPadraoAnimacao((670*10));
-        System.out.println("\nuso de no mínimo 5 cristais. lembrando que eu irei lhe ajudar, mas sem lhe dar a resposta correta.");
-        tempoPadraoAnimacao((670*10));
-        System.out.printf("\n\nO nosso futuro está nas suas mãos %S!", nome_jogador);
-        tempoPadraoAnimacao((500*10));
-        
-        System.out.println("Vocês entram na Florestas das Almas e começam a caminhar");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf(".");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf(".");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf(".\n");
-        tempoPadraoAnimacao((670*10));
-        System.out.printf("\nHawk: Há uma coisa que eu não lhe falei, suas escolhas definem o final desta nossa aventura, então tome cuidado no que decidir.");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf("\n\nVocês caminham por mais alguns minutos");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf(".");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf(".");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf(".\n");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf("\nVocê se depara com uma imagem de si mesmo a sua frente, semelhante a um espelho");
-        tempoPadraoAnimacao((670*10));
-        System.out.printf("\nPorém, não se parece com você, é um reflexo acinzentado, com uma aura assustadora e algo marcante ");
-        System.out.printf(".");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf(".");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf(".\n");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf("\nA criatura sussurrava repetidas vezes: \n");
-        
-        tempoPadraoAnimacao((670*10));
-        System.out.printf("-um zero um zero zero zero um um um um zero (10100011110) - a criatura medonha fez uma pausa e então continuou.\n");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf("\n - um um um una um zero zero um um zero (1111 1100 110).\n");
-        tempoPadraoAnimacao((500*10));
-        System.out.printf("Hawk: O que é isso? Ah %S, este é seu primeiro desafio.", nome_jogador);
-        tempoPadraoAnimacao((670*10));
-        System.out.printf("\nHawk: Para convertermos um número 'binário' para decimal, basta multiplicarmos essa ordem: 1010 0011 110 pelas potências do número 2.\n");
-        tempoPadraoAnimacao((670*10));
-        System.out.printf("Como por exemplo: 1x210 0x29 1x28 0x27 0x26 0x25 1x24 1x23 1x22 1x21 0x2°. Utilizando a ordem do 1° número binário (10100011110)\n");
-        tempoPadraoAnimacao((670*10));
-        System.out.printf("Conhece os valores de 2? Para relembrarmos, vou lhe dar uma pequena dica de cálculo: 2x11 = 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2.\n");
-        tempoPadraoAnimacao((670*10));
-        System.out.printf("O resultado de uma multiplicação, você multiplica pelo próximo número e assim sucessivamente. Experimente realizar o cálculo e selecionar a alternativa correta:\n");
-        tempoPadraoAnimacao((670*10));
-        boolean acertou = false;
-        while (!acertou == true) {
-            
-        }
     }
 
-    public static void capitulo_dois(String nome_jogador) {
-        
-    }
-
-    //---------------------------- Epilogo --------------------------------------------------
     public static void epilogo(String nome_jogador) {
         boolean verificaResposta = false;
 
         System.out.printf(
-                "\n%S, sua história começa com um jovem mestre, alguns taberneiros achavam que ele era um charlatão,\nas vezes o confundiam com um mago, e outras com um ser místico, enquanto outras pessoas\napenas o achavam um rapaz louco e bêbado.\n\n",
+                "\n%S, sua história começa com um jovem mestre, alguns taberneiros achavam que ele era um charlatão,\nas vezes o confundiam com um mago, e outras com um ser místico, enquanto outras pessoas\napenas o achavam um rapaz louco e bêbado",
                 nome_jogador);
         tempoPadraoAnimacao((670 * 10));
         System.out.printf(
-                "Ele possuía 1,71 de altura, barba rala era calvo.\n\nEra sorridente e bastante engraçado.\n\nSeu nome era lan Hawk.\nlan possuía muito conhecimento em assuntos computacionais, e por esse motivo as pessoas o achavam maluco, por ter conhecimento de assuntos que não faziam sentido naquela época e que ninguém nunca entendia.\n\n");
+                "\nEle possuía 1,71 de altura, barba rala e calvície. Era sorridente e bastante engraçado. Seu nome era lan Hawk.\nlan possuía muito conhecimento em assuntos computacionais, e por esse motivo as pessoas o achavam\nirracional, por ter conhecimento de assuntos que não eram daquela época e que ninguém nunca entendia.");
         tempoPadraoAnimacao((670 * 10));
         System.out.printf(
-                "\nMas como estava ficando muito velho decidiu passar sua sabedoria para as próximas gerações.\n\nEle queria plantar a semente do conhecimento naqueles que tinham vontade de aprender.");
+                "\nMas como estava ficando muito velho decidiu passar sua sabedoria para as próximas gerações.\nEle queria plantar a semente do conhecimento naqueles que tinham vontade de aprender.");
         tempoPadraoAnimacao((670 * 10));
 
-        //Se a resposta for verdade continua o jogo
         while (!verificaResposta == true) {
             System.out.println(
                     "\n\nVocê está pronto(a) para se tornar o aprendiz do mestre mago?\n");
@@ -487,16 +455,12 @@ public class Main {
 
             if (!entrada_user.equalsIgnoreCase("n") && entrada_user != null && entrada_user.matches("^[a-zA-Z]*$")) {
                 verificaResposta = true;
-            } else if (entrada_user.equalsIgnoreCase("n") && entrada_user != null && entrada_user.matches("^[a-zA-Z]*$")) {
-                menu();
-            } 
-            else {
+            } else {
                 System.out.println("Opa, parece que você digitou algo errado, lembre-se, responda com S ou N");
             }
         }
 
     }
-
 
     public static void main(String[] args) {
         imprimeBoasVindas();// animação de boas vindas ao jogo
