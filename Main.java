@@ -517,34 +517,34 @@ public class Main {
         tempoPadraoAnimacao((300 * 10));
 
         System.out.println("\n\nVocês entram na Florestas das Almas e começam a caminhar\n\n");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf(".");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf(".");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf(".\n");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf(
                 "\n\nHawk: Há uma coisa que eu não lhe falei, suas escolhas definem o final desta nossa aventura, então tome cuidado no que decidir.");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf("\n\nVocês caminham por mais alguns minutos\n");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf(".");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf(".");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf(".\n");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf("\nVocê se depara com uma imagem de si mesmo a sua frente, semelhante a um espelho");
         tempoPadraoAnimacao((600 * 10));
         System.out.printf(
                 "\nPorém, não se parece com você, é um reflexo acinzentado, com uma aura assustadora e algo marcante ");
         System.out.printf(".");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf(".");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf(".\n");
-        tempoPadraoAnimacao((300 * 10));
+        tempoPadraoAnimacao((30 * 10));
         System.out.printf("\nA criatura sussurrava repetidas vezes:\n");
         tempoPadraoAnimacao((600 * 10));
         System.out.printf(
