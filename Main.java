@@ -878,13 +878,13 @@ public class Main {
             if (!entrada_user.equalsIgnoreCase("n") && entrada_user != null && entrada_user.matches("^[a-zA-Z]*$")) {
                 verificaResposta = true;
                 System.out.printf(".");
-                tempoPadraoAnimacao(300 * 10);
+                tempoPadraoAnimacao(30 * 10);
                 System.out.printf(".");
-                tempoPadraoAnimacao(300 * 10);
+                tempoPadraoAnimacao(30 * 10);
                 System.out.printf(".");
-                tempoPadraoAnimacao(300 * 10);
+                tempoPadraoAnimacao(30 * 10);
                 System.out.printf(".");
-                tempoPadraoAnimacao(300 * 10);
+                tempoPadraoAnimacao(30 * 10);
 
             } else if (entrada_user.equalsIgnoreCase("n") && entrada_user != null
                     && entrada_user.matches("^[a-zA-Z]*$")) {
