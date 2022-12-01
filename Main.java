@@ -1,6 +1,11 @@
+//Alessandro de Oliveira Rocha ID - 1142573088
+//Ângelo Baracho Ferreira ID - 1141700072
+//João Vitor Nery Silva ID - 1142344610
+//Matheus Henrique Ramos Souza ID - 1141307153
+
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner; //Método para captar a entrada do usuário
+import java.util.Scanner;
 
 public class Main {
 
