@@ -79,10 +79,8 @@ public class Main {
         }
         return opcao; // retorna a opção escolhida
     }
-    // -------------------------------------------------------------------------------------
 
-    // ---------------------------------------------------------- MÉTODO QUE INICIA
-    // O JOGO -----------------------//
+    //------------------ MÉTODO QUE INICIA O JOGO ------------------//
     public static int jogar(int opcao) {
         // Matheus && Ângelo - Função que inicia o jogo após escolha no menu
         Scanner input = new Scanner(System.in);
@@ -105,10 +103,10 @@ public class Main {
                 System.out.println("**Pressione 4 para retornar ao menu principal**\n");
                 opcao = input.nextInt();
             } else {
-                capitulo_um(jogador_nome, vida, experiencia, cristais);
-                capitulo_dois(jogador_nome, vida, experiencia, cristais);
-                capitulo_tres(jogador_nome, vida, experiencia, cristais);
-                capitulo_quatro(jogador_nome, vida, experiencia, cristais);
+                int capitulo_um = capitulo_um(jogador_nome, vida, experiencia, cristais);
+                int capitulo_dois = capitulo_dois(jogador_nome, vida, experiencia, cristais);
+                int capitulo_tres = capitulo_tres(jogador_nome, vida, experiencia, cristais);
+                int capitulo_quatro = capitulo_quatro(jogador_nome, vida, experiencia, cristais);
             }
         } catch (Exception e) {// caso seja inserido um valor inválido exibe a seguinte mensagem de erro e
                                // solicita um novo input
@@ -214,9 +212,10 @@ public class Main {
 
     public static boolean alternativa_pergunta_cinco(int sim_nao) {
         boolean certo_errado = false;
-        if (sim_nao == 0) {
+
+        if (sim_nao == 1) {
             certo_errado = true;
-        } else if (sim_nao == 1) {
+        } else if (sim_nao == 0) {
             return certo_errado;
         }
 
@@ -373,12 +372,7 @@ public class Main {
 
     public static int danoAleatorio(int dano_minimo, int dano_maximo) {
         Random aleatorio = new Random();
-        int dano_sofrido = 0;
-        
-        dano_minimo = 1;
-        dano_maximo = 2;
-
-        
+        int dano_sofrido = 0;        
 
         dano_sofrido = aleatorio.nextInt(dano_maximo - dano_minimo) + dano_minimo;
 
@@ -478,8 +472,8 @@ public class Main {
     // -------------------------------------------------------------------------------------------------------
 
     // ---------------------------- Primeiro Capitulo ----------------------------
-    private static void capitulo_um(String nome_jogador, int vida, int experiencia, int cristais) {
-        int dano_capitulo_um = danoAleatorio(1, 5);
+    private static int capitulo_um(String nome_jogador, int vida, int experiencia, int cristais) {
+        int dano_capitulo_um = danoAleatorio(10, 50);
         tempoPadraoAnimacao((300 * 10));
         System.out.printf(
                 "\n\nHawk: Olá %S lhe garanto que se você desejar de fato, obter a consciência que estou disposto a ensinar,",
@@ -493,9 +487,9 @@ public class Main {
         System.out.println(
                 "\nOnde haverão desafios e indagações para a minha pessoa, e para ti também, aceita correr esse risco para despertar sua consciência?");
                 tempoPadraoAnimacao((300 * 10));
-        System.out.printf("\n\nGaranto que será útil em breve. Muito bem, então vamos lá.");
+        System.out.printf("\nGaranto que será útil em breve. Muito bem, então vamos lá.");
         tempoPadraoAnimacao((300 * 10));
-        System.out.println("\nVocês caminham até a floresta e o mago lan Hawk descreve como funcionarão as coisas:\n");
+        System.out.println("\n\nVocês caminham até a floresta e o mago lan Hawk descreve como funcionarão as coisas\n");
         //tempoPadraoAnimacao((550 * 10));
         System.out.printf(
                 "\nHawk: Pois bem, %S, nós caminharemos por esta floresta e surgirão monstros que farão perguntas sobre alguns assuntos.",
@@ -553,7 +547,7 @@ public class Main {
         System.out.printf("\nHawk: O que é isso? Ah %S, este é seu primeiro desafio.", nome_jogador);
         tempoPadraoAnimacao((500 * 10));
         System.out.printf(
-                "\nHawk: Para convertermos um número 'binário' para decimal, basta multiplicarmos essa ordem: 1010 0011 110 pelas potências do número 2.\n");
+                "\n\nHawk: Para convertermos um número 'binário' para decimal, basta multiplicarmos essa ordem: 1010 0011 110 pelas potências do número 2.\n");
                 tempoPadraoAnimacao((300 * 10));
         System.out.printf(
                 "\nComo por exemplo: 1x210 0x29 1x28 0x27 0x26 0x25 1x24 1x23 1x22 1x21 0x2°. Utilizando a ordem do 1° número binário (10100011110)\n");
@@ -605,11 +599,12 @@ public class Main {
                 acertou = true;
             }
         }
+        return vida;
     }
 
 
     //Capitulo 2
-    public static void capitulo_dois(String nome_jogador, int vida, int experiencia, int cristais) {
+    public static int capitulo_dois(String nome_jogador, int vida, int experiencia, int cristais) {
         String  escolha_jogador;
         System.out.println("\nApós o 1° desafio ter sido concluído, vocês e o mestre Ian continuam a explorar a floresta\n");
         do {
@@ -643,7 +638,7 @@ public class Main {
             }
         } while (escolha_jogador.equalsIgnoreCase("1")||escolha_jogador.equalsIgnoreCase("2")||escolha_jogador.equalsIgnoreCase("3"));
 
-        System.out.println("\n\nMinutos se passam e vocês encontram uma ponte com lamaçal em suas laterais, correndo um risco de ecorregarem e não conseguir voltar para o topo.\n\n");
+        System.out.println("\n\nMinutos se passam e vocês encontram uma ponte com lama em suas laterais, correndo um risco de ecorregarem e não conseguir voltar para o topo.\n\n");
         tempoPadraoAnimacao((300 * 10));
         System.out.println("Hawk: Não se assuste, esse caminho não é perigoso, vá com calma e seja cuidadoso.");
         tempoPadraoAnimacao((300 * 10));
@@ -659,7 +654,7 @@ public class Main {
         tempoPadraoAnimacao((300 * 10));
 
 
-        int dano_capitulo_dois = danoAleatorio(1, 7);
+        int dano_capitulo_dois = danoAleatorio(30, 70);
         boolean acertou = false;
 
         while (!acertou == true && vida > 0 && cristais > 0) {//Valida a questão enquanto as condições forem respeitadas
@@ -667,11 +662,11 @@ public class Main {
             tempoPadraoAnimacao((300 * 10));
             System.out.println("A álgebra booleana usa funções e variáveis, como na álgebra convencional, que podem assumir apenas um dentre dois valores:\n");
             tempoPadraoAnimacao((300 * 10));
-            System.out.println("I - {Não, Sim} – Resposta óbvia");
+            System.out.println("I - {Não, Sim} - Resposta óbvia");
             tempoPadraoAnimacao((300 * 10));
             System.out.println("II - {Falso, Verdadeiro} - Raciocínio humano");
             tempoPadraoAnimacao((300 * 10));
-            System.out.println("III - {True, False} – Raciocínio humano composto ");
+            System.out.println("III - {True, False} - Raciocínio humano composto ");
             tempoPadraoAnimacao((300 * 10));
             System.out.println("IV - {Desligado, Ligado} - Circuitos de chaveamento");
             tempoPadraoAnimacao((300 * 10));
@@ -689,7 +684,7 @@ public class Main {
                 tempoPadraoAnimacao((300 * 10));
                 System.out.printf("Hawk: Ora ora ora, parece que você está pegando o jeito %S, meu pequeno gafanhoto,\ndesse jeito nenhum tipo de desafio será páreo para nós dois.\nContinue prestando atenção e sendo cuidadoso na hora de responder", nome_jogador);
                 tempoPadraoAnimacao((300 * 10));
-
+//AZ190707430
                 acertou = true;
             } else {
                 System.out.println("\nVOCÊ ERROU!");
@@ -708,11 +703,12 @@ public class Main {
             }
         }
         System.out.println("Hawk: Olha meu jovem, sei que está ficando cansado (a), mas não desanime.\nA partir de agora faremos uma maratona! Nosso tempo está ficando apertado e não podemos permanecer nesta floresta a noite toda.\nTudo bem? Precisamos chegar pelo menos no topo daquela colina para termos um lugar para acampar e ficar um pouco mais seguro.\nEntão se apresse.\n\n");
+        return vida;
     }
 
     //Capitulo 3
 
-    public static void capitulo_tres(String nome_jogador, int vida, int experiencia, int cristais) {
+    public static int capitulo_tres(String nome_jogador, int vida, int experiencia, int cristais) {
         System.out.println("Vocês começam a correr e se esquivar dos galhos das árvores e obstáculos no caminho.\nMas, em um dos momentos de se esquivar de uma árvore, ela toma forma de uma criatura com braços em forma de galhos, e suas raízes sendo suas pernas.\nO monstro agarra você pelo braço e o aperta, causando dor na sua marca (se você tiver errado alguma questão, é claro),\nlançando você para longe de seu caminho.");
         tempoPadraoAnimacao((300 * 10));
         System.out.println("\n\nArvoroto: Hurh, nem mais um passo.\n\nHawk: Essa não... não imaginei que o nível fosse ficar mais alto logo agora... Tenho pessimas notícias.\n\n");
@@ -723,7 +719,7 @@ public class Main {
         tempoPadraoAnimacao((300 * 10));
         System.out.println("Arvoroto: ENTÃO VAMOS COMEÇAR: \n\nO monstro avança até você enquanto grita a pergunta\n\n");
 
-        int dano_capitulo_tres = danoAleatorio(10, 50);
+        int dano_capitulo_tres = danoAleatorio(30, 90);
         boolean acertou = false;
         while (!acertou == true && vida > 0 && cristais > 0) {//Valida a questão enquanto as condições forem respeitadas
             System.out.println("ME DÊ 1 EXEMPLO DO OPERADOR AND:\n");
@@ -758,8 +754,9 @@ public class Main {
         }
         System.out.println("Após você fazer um curativo para o dano causado pelo último monstro, vocês e Hawk começam a caminhar para o destino final, a colina.");
         tempoPadraoAnimacao((300 * 10));
+        return vida;
     }
-    public static void capitulo_quatro(String nome_jogador, int vida, int experiencia, int cristais) {
+    public static int capitulo_quatro(String nome_jogador, int vida, int experiencia, int cristais) {
         System.out.println("\n\nO dia estava se transformando em noite, corujas começaram a chirriar, os ventos ficaram mais fortes, e nossos aventureiros\nforam atingidos também...\npela fome.");
         tempoPadraoAnimacao((300 * 10));
         System.out.println("Eis que derrepente um gólem surge, e os indaga:\n");
@@ -767,7 +764,7 @@ public class Main {
         
         System.out.println("Gólem: RESPONDAM-ME RÁPIDO SE QUISEREM SOBREVIVER!");
         tempoPadraoAnimacao((300 * 10));
-        int dano_capitulo_quatro = danoAleatorio(30, 70);
+        int dano_capitulo_quatro = danoAleatorio(55, 95);
         boolean acertou_pergunta4 = false;
         while (!acertou_pergunta4 == true && vida > 0 && cristais > 0) {//Valida a questão enquanto as condições forem respeitadas
             System.out.println("\n\nGólem: QUEM FOI O PAI DA COMPUTAÇÃO?");
@@ -802,27 +799,113 @@ public class Main {
                 acertou_pergunta4 = true;
             }
         }
-        //Trecho da história omitido para fins da apresentação
+        System.out.println("Hawk: Está ficando tarde, já que o Golém nos deixou este 'presente',");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Hawk: o que você acha de fazermos uma boquinha durante a viagem? ");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.printf("%S: Acho perfeito!", nome_jogador);
+        tempoPadraoAnimacao((300 * 10));
+        System.out.printf(".");
+        tempoPadraoAnimacao((200 * 10));
+        System.out.printf(".");
+        tempoPadraoAnimacao((200 * 10));
+        System.out.printf(".");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Hawk: Não imaginei que você fosse aceitar meu convite para vir nessa viagem,");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Hawk: para ser bem franco com você, pensei que minha missão estaria perdida.");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Hawk: Os jovens de hoje em dia não se importam em ser uma pessoa diferente das demais,");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Hawk: na atualidade ninguém mais se preocupa com o dia de amanhã, precisamos semear bons conhecimentos para as próximas gerações,");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Hawk: de tal forma que consigamos ver um horizonte bonito como este no final do dia.");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.printf(".");
+        tempoPadraoAnimacao((200 * 10));
+        System.out.printf(".");
+        tempoPadraoAnimacao((200 * 10));
+        System.out.printf(".");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("\n\nQuando você termina de comer o seu lanche, você percebe uma coisa estranha em seu estômago, algo começa a borbulha e você começa a passar mal.\n\n");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.printf("%S: Hawk...\n%S: acho que tem alguma coisa de errado...",nome_jogador, nome_jogador);
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Hawk: O que está acontecendo com sua barriga meu jovem?\n");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("\n\nSeu estômago começa a inchar e ficar vermelho");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("\nVocê sente uma dor angustiante junto com a sensação de que ela iria rasgar.\n");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Quando de repente vocês escutam um som, vindo de dentro do seu estômago, semelhante a uma gargalhada:\n");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Bakgo: HAHAHAA, deixe eu me apresentar, meu nome é Bakgou, sou conhecido por explodir corpos.");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Bakgo: Porém, tem um jeito para impedir que isso aconteça...");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Bakgo: Você apenas tem que responder à minha pergunta corretamente e eu sairei do seu corpo, juro juradinho hihihihi");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.printf("\n\nHawk: Tudo bem %S, usarei meu poder de mago para deduzir que tipo de pergunta ele irá fazer e essa minha lição ajudará você a responde-lá.", nome_jogador);
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Hawk: Não tão diferente do último desafio que encontramos, será uma pergunta relacionada a operadores lógicos, desta vez o operador “OR”.");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("A tabela do operador “OR” dá-se pelo fato de que o número sempre será 1 até obtermos dois valores que possuam pelo menos um número igual a 1.");
+        System.out.println("Como por exemplo:\n");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("0 + 0 = 0");
+        System.out.println("0 + 1 = 1");
+        System.out.println("1 + 0 = 1");
+        System.out.println("1 + 1 = 1");
+        tempoPadraoAnimacao((300 * 10));
+        System.out.println("Bakgou: Então...\nBakgou: Não temos tempo a perder, huh?\nVamos ao seu desafio então:\n");
         boolean acertou_pergunta = false;
         int resposta_afirmativa_negativa = 2;
 
         while (!acertou_pergunta == true && vida > 0 && cristais > 0) {            
             System.out.println("Suponhamos que um jovem comerciante esteja vendendo 5 maçãs e 10 bananas,\nseu cliente compre 6 dessas frutas, a quantidade de frutas que irão\nrestar será correspondente ao valor da tabela verdade do operador lógico 'OR'?");
             tempoPadraoAnimacao((300 * 10));
-            System.out.println("RESPONDA COM '0' PARA SIM OU '1' PARA NÃO");
+            System.out.println("RESPONDA COM '0' PARA 'Negativo' OU '1' PARA 'Afirmativo'");
             int resposta_final = entrada_Numero();
 
             boolean sim_ou_nao = alternativa_pergunta_cinco(resposta_final);
             if (!sim_ou_nao == true) {
-                System.out.println(" Ao ter errado a resposta do desafio,\no monstro começa a gargalhar sem fim e sua visão começa a ficar extremamente escura,\nsua barriga continua inchando e ficando subitamente vermelha,\naté que explode e você morre");
+                System.out.println("\nO monstro começa a gargalhar sem fim e sua visão começa a ficar extremamente escura,\nsua barriga continua inchando e ficando subitamente vermelha,\naté que explode e você morre.\n");
+                tempoPadraoAnimacao((300 * 10));
+                System.out.printf(".");
+                tempoPadraoAnimacao((200 * 10));
+                System.out.printf(".");
+                tempoPadraoAnimacao((200 * 10));
+                System.out.printf(".");
+                tempoPadraoAnimacao((200 * 10));
+                System.out.println("\n\nSerá que é o fim\n\n");
+                tempoPadraoAnimacao((300 * 10));
+                System.out.printf(".");
+                tempoPadraoAnimacao((200 * 10));
+                System.out.printf(".");
+                tempoPadraoAnimacao((200 * 10));
+                System.out.printf(".");
+                tempoPadraoAnimacao((200 * 10));
+                int resscucitar = 0;
+                do {
+                    System.out.println("1 - POÇÃO DE RESSCUCITAÇÃO");
+                    resscucitar = entrada_Numero();
+                    if (resscucitar == 1) {
+                        break;
+                    }
+                } while (resscucitar != 1);
+                System.out.printf("\n\n%S, os pedaços e restos mortais do seu corpo se juntam novamente, tomando forma novamente.\n\n", nome_jogador);
+                tempoPadraoAnimacao((300 * 10));
+                System.out.println("Hawk: Achou mesmo que eu permitiria que algum monstro fizesse mal para você ao ponte de lhe matar?\n");
+                tempoPadraoAnimacao((300 * 10));
+                System.out.println("Hawk: Negativo, estamos perto do fim, só mais um pouco e finalizaremos nossa aventura.");
                 tempoPadraoAnimacao((300 * 10));
                 acertou_pergunta = true;
             } else {
-                System.out.println("Sua barriga começa a borbulhar e transbordar para fora de si. Em outras palavras...");
+                System.out.println("Sua barriga começa a borbulhar e transbordar para fora de si.\n\nEm outras palavras...");
                 tempoPadraoAnimacao((300 * 10));
-                System.out.println("\n\nVocê estava vomitando tudo o que estava dentro de si, inclusive o monstro");
+                System.out.println("\n\nVocê estava vomitando tudo o que estava dentro de você, inclusive o monstro\n");
                 tempoPadraoAnimacao((300 * 10));
-                System.out.println("Ao terminar de jogá-lo para fora, ele começa a crescer e a tomar uma forma de um ser humano peculiar");
+                System.out.println("Ao terminar de jogá-lo para fora, ele começa a crescer e a tomar uma forma de um ser humano peculiar\n");
                 tempoPadraoAnimacao((300 * 10));
                 System.out.println("Jeff Bezos: Eu não acredito, eu estou livre... nem sei como agradecer a vocês, prometo que irei recompensá-los no futuro.");
                 tempoPadraoAnimacao((300 * 10));
@@ -842,13 +925,14 @@ public class Main {
         tempoPadraoAnimacao(2500);
         System.out.printf(".");
         tempoPadraoAnimacao(2500);
-        System.out.println("\n\n\n RAIOS EXPLENDIDOS ENVOLVEM HAWK\n\n\n");
+        System.out.println("\n\n\n RAIOS EXPLENDIDOS ENVOLVEM HAWK!\n\n\n");
         tempoPadraoAnimacao((300*10));
         System.out.println("Ele revela sua verdadeira forma");
         tempoPadraoAnimacao((300*10));
         System.out.println("\n\n░ ░ Terry Myerson(vice president da windows) ░ ░\n\n");
         tempoPadraoAnimacao((760*10));
         creditos(3);
+        return vida;
     }
     // ---------------------------- prologo
     // --------------------------------------------------
